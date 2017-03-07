@@ -29,13 +29,12 @@
         android:layout_marginLeft="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginTop="24dp"
-        android:text="TextView"
+        android:text="@string/difficulty_text"
         android:textColor="@android:color/white"
         android:textSize="24sp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textScore"
-        tools:text="@string/difficulty_text"/>
+        app:layout_constraintTop_toBottomOf="@+id/textScore"/>
 
     <TextView
         android:id="@+id/textWatchGo"
