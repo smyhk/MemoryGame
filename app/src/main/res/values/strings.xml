@@ -2,4 +2,12 @@
     <string name="app_name">MemoryGame</string>
     <string name="title_text">Memory Game</string>
     <string name="play_button">Play!</string>
+    <string name="score_text">Score: %1$d</string>
+    <string name="difficulty_text">Difficulty: %1$d</string>
+    <string name="watch_go_text">Watch/Go</string>
+    <string name="button_one">1</string>
+    <string name="button_two">2</string>
+    <string name="button_three">3</string>
+    <string name="button_four">4</string>
+    <string name="button_replay">Replay</string>
 </resources>
