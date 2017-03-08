@@ -78,11 +78,40 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
                 super.handleMessage(msg);
 
                 if (mPlaySequence) {
-                    // to be continued
+                    mButtonOne.setVisibility(View.VISIBLE);
+                    mButtonTwo.setVisibility(View.VISIBLE);
+                    mButtonThree.setVisibility(View.VISIBLE);
+                    mButtonFour.setVisibility(View.VISIBLE);
+
+                    switch (mSequenceToCopy[mElementToPlay]) {
+                        case 1:
+                            // hide a button
+                            mButtonOne.setVisibility(View.INVISIBLE);
+                            mp1.start();
+                            break;
+                        case 2:
+                            mButtonTwo.setVisibility(View.INVISIBLE);
+                            mp2.start();
+                            break;
+                        case 3:
+                            mButtonThree.setVisibility(View.INVISIBLE);
+                            mp3.start();
+                            break;
+                        case 4:
+                            mButtonFour.setVisibility(View.INVISIBLE);
+                            mp4.start();
+                            break;
+                    }
+                    mElementToPlay++;
+                    if (mElementToPlay == mDifficultyLevel) {
+                        sequenceFinished();
+                    }
                 }
                 mHandler.sendEmptyMessageDelayed(0, 900);
             }
         }; // end thread
+
+        playSequence();
     }
 
     @Override
@@ -99,5 +128,26 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
             // save to array
             mSequenceToCopy[i] = ourRandom;
         }
+    }
+
+    public void playSequence() {
+        createSequence();
+        mIsResponding = false;
+        mElementToPlay = 0;
+        mPlayerResponses = 0;
+        mWatchGoTextView.setText(R.string.watch_text);
+        mPlaySequence = true;
+    }
+
+    public void sequenceFinished() {
+        mPlaySequence = false;
+        // ensure buttons are visible
+        mButtonOne.setVisibility(View.VISIBLE);
+        mButtonTwo.setVisibility(View.VISIBLE);
+        mButtonThree.setVisibility(View.VISIBLE);
+        mButtonFour.setVisibility(View.VISIBLE);
+
+        mWatchGoTextView.setText(R.string.go_text);
+        mIsResponding = true;
     }
 }
