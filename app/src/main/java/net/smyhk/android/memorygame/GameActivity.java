@@ -1,11 +1,38 @@
 package net.smyhk.android.memorygame;
 
 import android.media.MediaPlayer;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 
-public class GameActivity extends AppCompatActivity implements View.OnClickListener{
+public class GameActivity extends AppCompatActivity implements View.OnClickListener {
+    TextView mScoreTextView;
+    TextView mDifficultyTextView;
+    TextView mWatchGoTextView;
+
+    Button mButtonOne;
+    Button mButtonTwo;
+    Button mButtonThree;
+    Button mButtonFour;
+    Button mButtonReplay;
+
+    // for threading
+    int difficultyLevel = 3;
+    int[] sequenceToCopy = new int[100]; // holds randomly generated sequence
+
+    private Handler mHandler;
+    // playing sequence?
+    boolean mPlaySequence = false;
+    // which element of sequence are we on?
+    int mElementToPlay = 0;
+
+    // for checking player's answer
+    int mPlayerResponses;
+    int mPlayerScore;
+    boolean mIsResponding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
